@@ -40,12 +40,12 @@ jobs:
           $password = "admin@123"
           $securePass = ConvertTo-SecureString $password -AsPlainText -Force
 
-          if (-not (Get-LocalUser -Name "Ham7Office" -ErrorAction SilentlyContinue)) {
+          if (-not (Get-LocalUser -Name "Ham8Office" -ErrorAction SilentlyContinue)) {
               New-LocalUser -Name "Ham7Office" -Password $securePass -AccountNeverExpires
           }
-          Add-LocalGroupMember -Group "Administrators" -Member "Ham7Office"
-          Add-LocalGroupMember -Group "Remote Desktop Users" -Member "Ham7Office"
-          echo "RDP_CREDS=User: Ham7Office | Password: $password" >> $env:GITHUB_ENV
+          Add-LocalGroupMember -Group "Administrators" -Member "Ham8Office"
+          Add-LocalGroupMember -Group "Remote Desktop Users" -Member "Ham8Office"
+          echo "RDP_CREDS=User: Ham8Office | Password: $password" >> $env:GITHUB_ENV
           if (-not (Get-LocalUser -Name "Ham7Office")) {
               Write-Error "User creation failed"
               exit 1
@@ -91,7 +91,7 @@ jobs:
           Write-Host $ownershipNotice
           Write-Host "`n=== RDP ACCESS ==="
           Write-Host "Address: $env:TAILSCALE_IP"
-          Write-Host "Username: Ham7Office"
+          Write-Host "Username: Ham8Office"
           Write-Host "Password: admin@123"
           Write-Host "Powered by https://www.toolboxlap.xyz/"
           Write-Host "========= All rights reserved =========`n"
